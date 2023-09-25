@@ -12,4 +12,4 @@ services:
       - ./models:/tmp/japanese_clip
     working_dir: /app
     # tty: true
-    command: ["python", "main.py"]
+    command: ["python", "api.py"]
