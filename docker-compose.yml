@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    image: japanese_clip
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/tmp/japanese_clip
+    working_dir: /app
+    # tty: true
+    command: ["python", "main.py"]

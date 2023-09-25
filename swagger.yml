@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: CLIPモデルを用いたベクトル解析サーバー
+  version: 1.0.11
+tags:
+  - name: image
+paths:
+  /:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: Health check
+  /docs:
+    get:
+      summary: Swagger UI
+      responses:
+        '200':
+          description: Swagger UI
+  /txt2vec:
+    post:
+      tags: [text]
+      summary: Convert a text to a vector
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                text_data:
+                  type: string
+              required:
+                - text_data
+      responses:
+        '200':
+          description: JSON object representing the inference time and the text vector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inference_time:
+                    type: number
+                    format: float
+                  vector:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+        '400':
+          description: Bad request, the text is not present
+  /img2vec:
+    post:
+      tags: [image]
+      summary: Convert an image to a vector
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image-data:
+                  type: string
+                  format: binary
+              required:
+                - image-data
+      responses:
+        '200':
+          description: JSON object representing the inference time and the image vector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inference_time:
+                    type: number
+                    format: float
+                  vector:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+        '400':
+          description: Bad request, the file is not present
