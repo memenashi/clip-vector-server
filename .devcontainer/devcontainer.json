@@ -2,8 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "Python 3",
-	"dockerComposeFile":"../docker-compose.yml",
-	"service": "api",
+	"image":"japanese_clip:latest",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -12,9 +11,5 @@
 			]
 		}
 	},
-	"workspaceFolder": "/app",
-	"forwardPorts": [8000],
-	"features": {
-		"ghcr.io/devcontainers/features/git:1": {}
-	}
+	"forwardPorts": [8000]
 }

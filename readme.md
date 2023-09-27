@@ -14,4 +14,7 @@ $ docker-compose up -d
 
 ### Swagger UI
 
+Swagger UIから簡単にリクエストを送信し、試すことが出来ます。
+
 http://localhost:8000/
+

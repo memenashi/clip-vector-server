@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -U pip
 RUN pip install --no-cache-dir git+https://github.com/rinnakk/japanese-clip.git
 COPY requirements.txt .
 RUN pip install -r requirements.txt --no-cache-dir
-COPY main.py /app/
+COPY api.py /app/

@@ -5,7 +5,7 @@ services:
     build: 
       context: .
       dockerfile: .devcontainer/Dockerfile
-    image: japanese_clip
+    image: japanese_clip:latest
     ports:
       - "8000:8000"
     volumes:

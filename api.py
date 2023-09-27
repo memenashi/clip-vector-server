@@ -42,7 +42,7 @@ def img_to_vector(image: bytes) -> List[float]:
             image_features = model.encode_image(image)
         
         # Convert tensor to list
-        result = image_features.cpu().numpy().tolist()
+        result = image_features.cpu().numpy().tolist()[0]
 
         return result
 
@@ -86,8 +86,7 @@ def health_check():
         "description": "Bad request, the text is not present"
     }
 })
-
-async def convert_to_image_vector(image_data: UploadFile = Form(...)):
+async def convert_to_image_vector(image_data: UploadFile = File(..., alias="image-data")):
     logging.info(f"Received file: {image_data.filename}")
     try:
         # Read file contents
